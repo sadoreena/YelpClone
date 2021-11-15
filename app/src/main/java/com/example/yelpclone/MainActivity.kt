@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 restaurants.addAll(body.restaurants)
                 adapter.notifyDataSetChanged()
+
             }
 
             override fun onFailure(call: Call<YelpSearchResult>, t: Throwable) {

@@ -1,9 +1,13 @@
 package com.example.yelpclone
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -37,6 +41,12 @@ class RestaurantsAdapter(val context: Context, val restaurants: List<YelpRestaur
             Glide.with(context).load(restaurant.imageUrl).apply(RequestOptions().transforms(
                 CenterCrop(), RoundedCorners(20)
             )).into(itemView.imageView)
+
+            itemView.yelpLogo.setOnClickListener{
+                val openURL = Intent(android.content.Intent.ACTION_VIEW)
+                openURL.data = Uri.parse(restaurant.url)
+                context.startActivity(openURL)
+            }
         }
     }
 }
